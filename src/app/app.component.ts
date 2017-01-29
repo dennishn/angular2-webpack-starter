@@ -69,11 +69,34 @@ export class AppComponent implements OnInit {
   public name = 'Angular 2 Webpack Starter';
   public url = 'https://twitter.com/AngularClass';
 
+  private logStyles = [
+    'display: block',
+    'line-height: 20px',
+    'font-weight: bold',
+    'text-align: center'
+  ];
+
   constructor(
     public appState: AppState
   ) {}
 
   public ngOnInit() {
+    switch(ENV) {
+      case 'development':
+        this.logStyles.push('color: red');
+        break;
+      case 'staging':
+        this.logStyles.push('color: orange');
+        break;
+      case 'production':
+        this.logStyles.push('color: green');
+        break;
+      default:
+        this.logStyles.push('color: red');
+    }
+
+    console.log(`%c App runnin on environment mode: ${ENV}`, this.logStyles.join(';'));
+
     console.log('Initial App State', this.appState.state);
   }
 

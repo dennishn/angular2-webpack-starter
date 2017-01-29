@@ -12,8 +12,10 @@
   "license": "MIT",
   "scripts": {
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && webpack --config config/webpack.prod.js  --progress --profile --bail",
+    "build:aot:staging": "npm run clean:dist && npm run clean:aot && webpack --config config/webpack.staging.js  --progress --profile --bail",
     "build:aot": "npm run build:aot:prod",
     "build:dev": "npm run clean:dist && webpack --config config/webpack.dev.js --progress --profile",
+    "build:staging": "npm run clean:dist && webpack --config config/webpack.staging.js  --progress --profile --bail",
     "build:prod": "npm run clean:dist && webpack --config config/webpack.prod.js  --progress --profile --bail",
     "build": "npm run build:dev",
     "clean:dll": "npm run rimraf -- dll",
@@ -35,6 +37,7 @@
     "typedoc": "typedoc",
     "watch:dev:hmr": "npm run watch:dev -- --hot",
     "watch:dev": "npm run build:dev -- --watch",
+    "watch:staging": "npm run build:staging -- --watch",
     "watch:prod": "npm run build:prod -- --watch",
     "watch": "npm run watch:dev",
     "webpack-dev-server": "webpack-dev-server",
