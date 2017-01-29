@@ -11,6 +11,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const IgnorePlugin = require('webpack/lib/IgnorePlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
@@ -134,6 +135,17 @@ module.exports = function (env) {
 
       new OptimizeJsPlugin({
         sourceMap: false
+      }),
+
+      new ImageminPlugin({
+        // pngquant throwing errors on windows so disabled for now :(
+        pngquant: null,
+        // pngquant: {
+        //   quality: '95-100'
+        // },
+        jpegtran: {
+          progressive: true
+        }
       }),
 
       /**
