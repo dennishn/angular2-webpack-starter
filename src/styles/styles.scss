@@ -2,13 +2,21 @@
 /* This file is for setting global styles  */
 @import 'variables';
 
+@import '~foundation-sites/scss/foundation';
+@include foundation-global-styles;
+@include foundation-flex-grid;
+@include foundation-typography;
+@include foundation-forms;
+@include foundation-button;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
+@include foundation-flex-classes;
+
 nav {
   margin-top: 16px;
 }
 
 nav a {
-  background-color: $nav-button-color;
-  color: white;
   padding: 8px 16px;
   margin: 8px;
   vertical-align: middle;
@@ -16,4 +24,13 @@ nav a {
   text-align: center;
   text-decoration: none;
   border-radius: 4px;
+}
+
+/* Test Autoprefixer through PostCSS */
+.test-autoprefixer {
+  display: flex;
+}
+/* Test global style that flows into isolated styled component */
+nav {
+  background-color: orange;
 }

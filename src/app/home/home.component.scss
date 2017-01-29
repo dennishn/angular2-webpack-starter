@@ -1,1 +1,21 @@
-/*styles for home content only*/
+/* Test overwriting globally defined variables */
+$foundation-palette: (
+        primary: green,
+        secondary: #767676,
+        success: #3adb76,
+        warning: #ffae00,
+        alert: #cc4b37,
+);
+/* We need this regardles of how we wan't to utilize the overwritten variables */
+@import '~foundation-sites/scss/foundation';
+
+/*
+    In general, doing this leads to extra CSS payload as we are declaring styles both encapsulated, and globally.
+    This test wins however because of CSS specifity.
+*/
+/* Test using a mixin */
+.button {
+    @include button-style($background: get-color(primary));
+}
+/* Test including foundation-button once more */
+//@include foundation-button;

@@ -14,9 +14,9 @@ import { AppState } from './app.service';
  */
 @Component({
   selector: 'app',
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    './app.component.css'
+    './app.component.scss'
   ],
   template: `
     <nav>
@@ -39,6 +39,7 @@ import { AppState } from './app.service';
 
     <main>
       <router-outlet></router-outlet>
+      <button class="button">Test globally styles Foundation Button (and global variables file with primary set to tomaty!</button>
     </main>
 
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>

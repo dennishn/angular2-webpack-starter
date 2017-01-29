@@ -16,12 +16,13 @@
     <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
 
       <input
+        type="text"
         [value]="localState.value"
         (input)="localState.value = $event.target.value"
         placeholder="Submit Local State to App State"
         autofocus>
 
-      <button md-raised-button color="primary">Submit Value</button>
+      <button class="button" >Submit Value - encapsulated overwrite of foundation primary color</button>
     </form>
     <!--
         <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
