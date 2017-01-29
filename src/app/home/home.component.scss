@@ -19,3 +19,25 @@ $foundation-palette: (
 }
 /* Test including foundation-button once more */
 //@include foundation-button;
+
+/* Test including relative asses in encapsulated component */
+.bg {
+    width: 100px;
+    height: 100px;
+    background-size: 100px;
+    &--png {
+        background-image: url(/assets/img/png.png);
+    }
+    &--jpg {
+        background-image: url(/assets/img/jpg.jpg);
+    }
+    &--jpeg {
+        background-image: url(/assets/img/jpeg.jpeg);
+    }
+    &--gif {
+        background-image: url(/assets/img/gif.gif);
+    }
+    &--svg {
+        background-image: url(/assets/img/svg.svg);
+    }
+}
