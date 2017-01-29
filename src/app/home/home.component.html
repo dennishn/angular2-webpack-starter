@@ -8,6 +8,19 @@
     <pre>npm run start:hmr</pre>
   </div>
 
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="bg bg--png"></div>
+      <div class="bg bg--jpg"></div>
+      <div class="bg bg--jpeg"></div>
+      <div class="bg bg--gif"></div>
+      <div class="bg bg--svg"></div>
+    </div>
+  </div>
+
+  <h1 class="apply-local-font">This Should be IndieFlower</h1>
+  <h1 class="apply-external-font">This Should be Pacifico</h1>
+
   <hr>
 
   <div>
@@ -16,12 +29,13 @@
     <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
 
       <input
+        type="text"
         [value]="localState.value"
         (input)="localState.value = $event.target.value"
         placeholder="Submit Local State to App State"
         autofocus>
 
-      <button md-raised-button color="primary">Submit Value</button>
+      <button class="button" >Submit Value - encapsulated overwrite of foundation primary color</button>
     </form>
     <!--
         <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
@@ -32,6 +46,15 @@
 
     <pre>this.localState = {{ localState | json }}</pre>
 
+  </div>
+  
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <video src="/assets/media/bb.mp4" controls></video>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <audio src="/assets/media/mm.mp3" controls></audio>
+    </div>
   </div>
 
 </div>

@@ -1,0 +1,10 @@
+/* Test usage of global variables */
+@import "../styles/variables";
+
+/* Test scoped styles */
+nav {
+  a {
+    color: #fff;
+    background-color: $nav-button-color;
+  }
+}

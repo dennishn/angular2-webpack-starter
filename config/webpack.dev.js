@@ -11,6 +11,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
  * Webpack Plugins
  */
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
@@ -111,7 +112,11 @@ module.exports = function (options) {
          */
         {
           test: /\.scss$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
+          // use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader?sourceMap'],
+          loader: ExtractTextPlugin.extract({
+            fallbackLoader: 'style-loader',
+            loader: 'css-loader?sourceMap!postcss-loader?sourceMap!sass-loader?sourceMap'
+          }),
           include: [helpers.root('src', 'styles')]
         },
 
@@ -140,6 +145,14 @@ module.exports = function (options) {
           'HMR': METADATA.HMR,
         }
       }),
+
+      /**
+       * Plugin: ExtractTextPlugin
+       * Description: Extracts imported CSS files into external stylesheet
+       *
+       * See: https://github.com/webpack/extract-text-webpack-plugin
+       */
+      new ExtractTextPlugin('[name].[contenthash].css'),
 
       new DllBundlesPlugin({
         bundles: {
@@ -203,7 +216,16 @@ module.exports = function (options) {
       new LoaderOptionsPlugin({
         debug: true,
         options: {
-
+          context: helpers.root('src'),
+          output: {
+            path: helpers.root('dist'),
+          },
+          sassLoader: {
+            includePaths: [
+              helpers.root('node_modules'),
+              helpers.root('src'),
+            ],
+          },
         }
       }),
 

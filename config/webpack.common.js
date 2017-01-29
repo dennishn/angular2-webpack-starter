@@ -164,7 +164,7 @@ module.exports = function (options) {
          */
         {
           test: /\.scss$/,
-          use: ['to-string-loader', 'css-loader', 'sass-loader'],
+          use: ['to-string-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
           exclude: [helpers.root('src', 'styles')]
         },
 
@@ -182,7 +182,7 @@ module.exports = function (options) {
         /* File loader for supporting images, for example, in CSS files.
          */
         {
-          test: /\.(jpg|png|gif)$/,
+          test: /\.(jpg|jpeg|png|svg|gif|mp4|mp3)$/,
           use: 'file-loader'
         },
 
