@@ -243,6 +243,8 @@ module.exports = function (options) {
       port: METADATA.port,
       host: METADATA.host,
       historyApiFallback: true,
+      compress: true,
+      https: true,
       watchOptions: {
         aggregateTimeout: 300,
         poll: 1000
