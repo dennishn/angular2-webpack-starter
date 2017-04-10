@@ -179,12 +179,20 @@ module.exports = function (options) {
           exclude: [helpers.root('src/index.html')]
         },
 
-        /* File loader for supporting images, for example, in CSS files.
+        /* 
+         * File loader for supporting images, for example, in CSS files.
          */
         {
           test: /\.(jpg|jpeg|png|svg|gif|mp4|mp3)$/,
           use: 'file-loader'
         },
+
+        /* File loader for supporting fonts, for example, in CSS files.
+        */
+        { 
+          test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
+          use: 'file-loader'
+        }
 
       ],
 
